@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieService
+namespace MovieService.Models
 {
     public sealed class Movie
     {

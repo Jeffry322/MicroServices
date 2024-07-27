@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MovieService.Models;
 
 namespace MovieService.Data
 {
