@@ -2,7 +2,7 @@
 using MovieService.Abstractions;
 using MovieService.Models;
 
-namespace MovieService.Data
+namespace MovieService.Data.Repository
 {
     public class MovieRepository : IMovieRepository
     {
@@ -27,7 +27,7 @@ namespace MovieService.Data
         {
             var movie = await _context.Movies.FindAsync(id);
 
-            if(movie == null)
+            if (movie == null)
             {
                 throw new KeyNotFoundException($"Movie with Id: {id} wasn't found");
             }
@@ -39,7 +39,7 @@ namespace MovieService.Data
         {
             var movies = await _context.Movies.ToListAsync();
 
-            if(movies.Count == 0 && movies is null)
+            if (movies.Count == 0 && movies is null)
             {
                 throw new KeyNotFoundException("No movies found");
             }
