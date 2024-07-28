@@ -25,6 +25,10 @@ namespace MovieService.Data.SeedDb
                 };
 
                 await context.Movies.AddRangeAsync(movies);
+
+                var saved = await context.SaveChangesAsync();
+
+                logger.LogInformation("Seeded {saved} records", saved);
             }
             else
             {
