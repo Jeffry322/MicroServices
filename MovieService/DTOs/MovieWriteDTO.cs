@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieService.Models
+namespace MovieService.DTOs
 {
-    public sealed class Movie
+    public sealed class MovieWriteDTO
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required]
         public string Title { get; set; }
 
