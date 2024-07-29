@@ -13,14 +13,17 @@ namespace MovieService.Controllers
         private readonly IMovieRepository _movieRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<MoviesController> _logger;
+        private readonly IActorsDataClient _actorsDataClient;
 
         public MoviesController(IMovieRepository movieRepository,
             IMapper mapper,
-            ILogger<MoviesController> logger)
+            ILogger<MoviesController> logger,
+            IActorsDataClient actorsDataClient)
         {
             _movieRepository = movieRepository;
             _mapper = mapper;
             _logger = logger;
+            _actorsDataClient = actorsDataClient;
         }
 
         [HttpGet]
@@ -72,6 +75,15 @@ namespace MovieService.Controllers
             await _movieRepository.SaveChangesAsync();
 
             var movieReadDTO = _mapper.Map<MovieReadDTO>(movie);
+
+            try
+            {
+                await _actorsDataClient.SendMovieToActor(movieReadDTO);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, "Couldn't send synchronously");
+            }
 
             return CreatedAtRoute(nameof(GetMovieById), new { Id = movieReadDTO.Id }, movieReadDTO);
         }
