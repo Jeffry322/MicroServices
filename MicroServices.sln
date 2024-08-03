@@ -5,7 +5,13 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieService", "MovieService\MovieService.csproj", "{7B4463AA-0A9D-446F-A8A8-AAAFE6EAE5CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActorsService", "ActorsService\ActorsService.csproj", "{ADC104A0-8C06-40B3-90B3-8BD9C3939D67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ActorsService", "ActorsService\ActorsService.csproj", "{ADC104A0-8C06-40B3-90B3-8BD9C3939D67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{317F2443-443F-4C28-BC07-1DF881CBD3E3}"
+	ProjectSection(SolutionItems) = preProject
+		actors-deployment.yaml = actors-deployment.yaml
+		movies-deployment.yaml = movies-deployment.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

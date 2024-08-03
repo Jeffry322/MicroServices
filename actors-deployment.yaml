@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actors-deployment
+  labels:
+    app: actors-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actors-service
+  template:
+    metadata:
+      labels:
+        app: actors-service
+    spec:
+      containers:
+      - name: actors
+        image: jeffry322/actors-service:latest
+        ports:
+        - containerPort: 8080

@@ -18,15 +18,16 @@ namespace MovieService.SyncDataServices.Http
             _httpClient = httpClient;
             _logger = logger;
             _config = config;
+            _httpClient.BaseAddress = new Uri(_config["ActorsService:BaseUrl"]);
         }
 
         public async Task SendMovieToActor(MovieReadDTO movieReadDTO)
         {
             var httpContent = new StringContent(JsonSerializer.Serialize(movieReadDTO), Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync(_config["ActorsService"], httpContent);
+            var response = await _httpClient.PostAsync("/api/actors/movies", httpContent);
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 _logger.LogInformation("Sync POST to Actors was OK!");
             } 

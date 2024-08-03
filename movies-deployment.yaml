@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movies-deployment
+  labels:
+    app: movies-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movies-service
+  template:
+    metadata:
+      labels:
+        app: movies-service
+    spec:
+      containers:
+      - name: movies
+        image: jeffry322/movies-service:latest
+        ports:
+        - containerPort: 8080

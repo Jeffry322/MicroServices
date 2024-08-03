@@ -24,6 +24,9 @@ builder.Services.AddLogging(loggingBuilder =>
 
 var app = builder.Build();
 
+Console.WriteLine(app.Environment.EnvironmentName);
+app.Logger.LogInformation($"Actors service ENDPOINT: {app.Configuration["ActorsService:BaseUrl"]}");
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
