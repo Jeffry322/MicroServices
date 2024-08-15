@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{317F2443-443F-4C28-BC07-1DF881CBD3E3}"
 	ProjectSection(SolutionItems) = preProject
 		actors-deployment.yaml = actors-deployment.yaml
+		ingress-svc.yaml = ingress-svc.yaml
 		movies-deployment.yaml = movies-deployment.yaml
 	EndProjectSection
 EndProject

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-svc
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ingress.svc.com
+    http:
+      paths:
+      - path: /api/movies
+        pathType: Prefix
+        backend:
+          service:
+            name: movies-cluster-ip
+            port:
+              number: 8080
+      - path: /api/actors/movies
+        pathType: Prefix
+        backend:
+          service:
+            name: actors-deployment
+            port:
+              number: 8080
